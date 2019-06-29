@@ -1,15 +1,15 @@
 # pyREST
 
 ## WHAT IS? 
-This is a pytest framework that allows for testing server responses to queries. Define RESTful queries in JSON and what is supposed to come back as a result. The framework allows for chaining requests together to facillitate user-story validation. 
+This is a [pytest](https://docs.pytest.org/en/latest/) framework that allows for testing server responses to queries. Define RESTful queries in JSON and what is supposed to come back as a result. The framework allows for chaining requests together to facillitate user-story validation. 
 
 
 ## HOW TO SET UP? 
-Create a virtual environment and use the requirements file in the project directory to install what's needed into your venv sandbox. See https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv for help on dealing with virtualenv.  
+Create a virtual environment and use the requirements file in the project directory to install what's needed into your venv sandbox. See [this](https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv) for help on dealing with virtualenv.  
 
 
 ## HOW TO RUN?
-In pycharm or the termianl you can run this like any other pytest. If running at the command line get into the root project directory and execute the following command:
+In pycharm or the terminal you can run this like any other pytest. If running at the command line get into the root project directory and execute the following command:
  `pytest -s ` (omit the `-s` flag if you don't want log data printed to the terminal).
 
 ## HOW TO WRITE NEW TESTS? 
