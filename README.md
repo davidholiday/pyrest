@@ -5,14 +5,8 @@ This is a pytest framework that allows for testing server responses to queries. 
 
 
 ## HOW TO SET UP? 
-In addition to pytest. make sure you have the following modules included in your python environment: 
+Create a virtual environment and use the requirements file in the project directory to install what's needed into your venv sandbox. See https://docs.python-guide.org/dev/virtualenvs/#lower-level-virtualenv for help on dealing with virtualenv.  
 
-* PyYAML >= 3.12
-* requests >= 2.14.2
-* test-steps >= 0.9.0
-* psycopg2 >= 2.7.1
-* passlib >= 1.7.1
-* pytest-oot >= 0.6.1
 
 ## HOW TO RUN?
 In pycharm or the termianl you can run this like any other pytest. If running at the command line get into the root project directory and execute the following command:
