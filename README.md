@@ -1,7 +1,7 @@
 # pyREST
 
 ## WHAT IS? 
-This is a [pytest](https://docs.pytest.org/en/latest/) framework that allows for testing server responses to queries. Define RESTful queries in JSON and what is supposed to come back as a result. The framework allows for chaining requests together to facillitate user-story validation. 
+This is a [pytest](https://docs.pytest.org/en/latest/) framework that allows for testing server responses to RESTful queries. What goes in and what's expected back as a result is defined in JSON files. The framework allows for chaining requests together to facilitate user-story validation. For example, if a caller must be logged in prior to accessing a particular endpoint, the framework allows you to chain requests together and the the result of a preceding request as a parameter for a subsequent one. So you can first POST to a /login endpoint, retain the JWT/Cookie/magick-whatever, then pass it along to another endpoint GET /all_the_goodies. 
 
 
 ## HOW TO SET UP? 
@@ -12,12 +12,14 @@ Create a virtual environment and use the requirements file in the project direct
 In pycharm or the terminal you can run this like any other pytest. If running at the command line get into the root project directory and execute the following command:
  `pytest -s pyrest.py` (omit the `-s` flag if you don't want log data printed to the terminal). This will cause pyREST to collect everything in the `./test_parameter_files` directory and use those json files to send RESTful requests and check the responses against whatever the parameter file says should come back. 
 
+
 ## HOW TO MAKE THE SAMPLE TEST RUN? 
 pyREST comes with a sample test intended to be run against a sample service provided via file `./flask_server.py`. To make the sample test run:
 
 1. fire up the test server thusly: `FLASK_APP=flask_server.py flask run`
 2. in a new terminal window, run pyREST 
 3. you should see activity in both terminal windows - an indication the request was serviced in the flask window as well as pyREST telling you what tests are running and whether or not they passed. 
+
 
 ## HOW TO WRITE NEW TESTS? 
 
