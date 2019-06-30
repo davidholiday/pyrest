@@ -10,7 +10,14 @@ Create a virtual environment and use the requirements file in the project direct
 
 ## HOW TO RUN?
 In pycharm or the terminal you can run this like any other pytest. If running at the command line get into the root project directory and execute the following command:
- `pytest -s ` (omit the `-s` flag if you don't want log data printed to the terminal).
+ `pytest -s pyrest.py` (omit the `-s` flag if you don't want log data printed to the terminal). This will cause pyREST to collect everything in the `./test_parameter_files` directory and use those json files to send RESTful requests and check the responses against whatever the parameter file says should come back. 
+
+## HOW TO MAKE THE SAMPLE TEST RUN? 
+pyREST comes with a sample test intended to be run against a sample service provided via file `./flask_server.py`. To make the sample test run:
+
+1. fire up the test server thusly: `FLASK_APP=flask_server.py flask run`
+2. in a new terminal window, run pyREST 
+3. you should see activity in both terminal windows - an indication the request was serviced in the flask window as well as pyREST telling you what tests are running and whether or not they passed. 
 
 ## HOW TO WRITE NEW TESTS? 
 
