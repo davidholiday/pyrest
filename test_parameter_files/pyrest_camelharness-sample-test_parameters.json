@@ -1,0 +1,15 @@
+  {
+    "purpose": "SAMPLE",
+    "tag" : "healthcheck should respond with HTTP200",
+    "skip": false,
+    "http_verb": "GET",
+    "payload": {},
+    "files": {},
+    "url": "http://localhost:8889/camelharness/healthcheck",
+    "expected_response_status_code": 200,
+    "expected_response_headers_content_type": "application/json; charset=utf-8",
+    "expected_response_json": {},
+    "expected_response_json_type_check": {},
+    "retain_response_keys": [],
+    "subsequent_request": {}
+  }

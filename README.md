@@ -14,7 +14,7 @@ In pycharm or the terminal you can run this like any other pytest. If running at
 
 ## HOW TO WRITE NEW TESTS? 
 
-pyREST considers a json test file to be a *suite* of tests and each json block in the file to be an individual test. To add new tests, add a new properly formatted json block to the suite test file located in `./test_parameter_files`. If you instead want to create a new test suite as well as a new test, create a new json file in the aforementioned directory that follows the naming convention: **pyrest_{name of suite}_test_parameters.json**. It is important that you follow this naming convention as failure to do so will dork up the frameworks' ability to process the file. 
+pyREST considers a json test file to be a *suite* of tests and each json block in the file to be an individual test. To add new tests, either create a new suite file and add the test definition to it or add a new test definition block to an existing suite test file located in `./test_parameter_files`. the naming convention: **pyrest_{name of suite}_test_parameters.json**. It is important that you follow this naming convention as failure to do so will dork up the frameworks' ability to pick up the suite name.
 
 ### what is meant by 'a properly formatted json block?'
 This is an example of a properly formatted json block. Note that the test logic expects all keys to be represented, even if there are no values associated with them: 
