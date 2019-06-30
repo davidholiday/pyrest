@@ -216,18 +216,18 @@ def test_api_endpoints(test_data):
     if 'retained_responses' in test_data:
 
         for http_verb, retained_response_kv_dict \
-                in test_data['retained_responses'].iteritems():
+                in test_data['retained_responses'].items():
 
             if http_verb == 'GET':
                 for e in retained_response_kv_dict:
-                    for k, v in e.iteritems():
+                    for k, v in e.items():
                         new_url = test_data['url'] + '/' + str(v)
                         test_logger.info("updating url to: " + new_url)
                         test_data['url'] = new_url
 
             elif http_verb == 'POST':
                 for e in retained_response_kv_dict:
-                    for k, v in e.iteritems():
+                    for k, v in e.items():
 
                         test_logger.info(
                             "adding %s %s to body of POST request " % (k, v))
@@ -321,7 +321,7 @@ def test_api_endpoints(test_data):
     if len(test_data['expected_response_json_type_check']) is not 0:
         type_dict = get_type_dict()
 
-        for k, v in test_data['expected_response_json_type_check'].iteritems():
+        for k, v in test_data['expected_response_json_type_check'].items():
             actual_response_value = actual_response_json[k]
             expected_type = type_dict[v]
 
@@ -345,11 +345,11 @@ def test_api_endpoints(test_data):
     # what a given REST call returns may not map to the same k,v pair a
     # subsequent call is expecting. this block reads the test parameter file
     # and makes the appropriate translation
-    for http_verb, retain_response_key_dict in retain_response_keys.iteritems():
+    for http_verb, retain_response_key_dict in retain_response_keys.items():
 
         retained_response_kv_list = []
         for response_key, subsequent_request_key in \
-                retain_response_key_dict.iteritems():
+                retain_response_key_dict.items():
 
             test_logger.info(actual_response_json)
             retained_response_element = {

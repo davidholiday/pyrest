@@ -25,7 +25,7 @@ def load_params_from_json(json_paths):
     for json_path in json_paths:
         with open(json_path) as f:
             return_list += json.load(f)
-
+    print("json is: " + str(return_list))
     return return_list
 
 
@@ -43,7 +43,7 @@ def load_ids_from_json(json_paths):
     return_list = []
     for json_path in json_paths:
         with open(json_path) as f:
-            param_dict = json.load(f)
+            param_list = json.load(f)
 
             # get suite tag from filename
             filename = os.path \
@@ -56,17 +56,17 @@ def load_ids_from_json(json_paths):
             suite_name = ' '.join(name_list) \
                             .upper()
 
-            # make sure to include notice of skipped tests in the test ID
-            # this way it gets reported both in the log and to the IDE
-            if param_dict['skip']:
-                tag = "*SKIPPED* " + suite_name + ": " + param_dict['tag']
-            else:
-                tag = suite_name + ": " + param_dict['tag']
+            for param in param_list:
+                # make sure to include notice of skipped tests in the test ID
+                # this way it gets reported both in the log and to the IDE
+                if param['skip']:
+                    tag = "*SKIPPED* " + suite_name + ": " + param['tag']
+                else:
+                    tag = suite_name + ": " + param['tag']
 
-            return_list += [tag]
-
+                return_list += [tag]
+    print("tag list is: " + str(return_list))
     return return_list
-
 
 def get_test_parameter_file_list():
     """Contains the test parameter file paths
@@ -81,6 +81,7 @@ def get_test_parameter_file_list():
     test_directory = os.path.join(current_directory, 'test_parameter_files')
     search_pattern = test_directory + "/*.json"
     test_parameter_file_list = glob.glob(search_pattern)
+    print("returning test_parameter_file_list: " + str(test_parameter_file_list))
     return test_parameter_file_list
 
 
