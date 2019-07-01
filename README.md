@@ -16,56 +16,59 @@ In pycharm or the terminal you can run this like any other pytest. If running at
 ## HOW TO MAKE THE SAMPLE TEST RUN? 
 pyREST comes with a sample test intended to be run against a sample service provided via file `./flask_server.py`. To make the sample test run:
 
-1. fire up the test server thusly: `FLASK_APP=flask_server.py flask run`
+1. fire up the test server thusly: `./FLASK_APP=flask_server.py flask run`
 2. in a new terminal window, run pyREST 
 3. you should see activity in both terminal windows - an indication the request was serviced in the flask window as well as pyREST telling you what tests are running and whether or not they passed. 
 
 
 ## HOW TO WRITE NEW TESTS? 
 
-pyREST considers a json test file to be a *suite* of tests and each json block in the file to be an individual test. To add new tests, either create a new suite file and add the test definition to it or add a new test definition block to an existing suite test file located in `./test_parameter_files`. the naming convention: **pyrest_{name of suite}_test_parameters.json**. It is important that you follow this naming convention as failure to do so will dork up the frameworks' ability to pick up the suite name.
+pyREST considers a json test file to be a *suite* of tests and each json block in the file to be an individual test. To add new tests, either create a new suite file and add the test definition to it or add a new test definition block to an existing suite test file located in `./test_parameter_files`. the naming convention: **pyrest_{name-of-suite}_test_parameters.json** is what the parser is expecting to see. if it's not there it will mess up the parser's ability to pick up the suite name. 
 
 ### what is meant by 'a properly formatted json block?'
 This is an example of a properly formatted json block. Note that the test logic expects all keys to be represented, even if there are no values associated with them: 
 
 ```  
-  {
-    "purpose": "SETUP",
-    "tag" : "user should be able to log out",
-    "skip": false,
-    "http_verb": "POST",
-    "payload": {
-      "username": "Grizzly",
-      "password": "adam$"
-    },
-    "files": {},
-    "url": "https://localhost:3000/user/login",
-    "expected_response_status_code": 200,
-    "expected_response_headers_content_type": "application/json; charset=utf-8",
-    "expected_response_json": {
-      "user": 1,
-      "status": "Login successful!"
-    },
-    "expected_response_json_type_check": {},
-    "retain_response_keys": [],
-    "subsequent_request": {
-      "purpose": "TEST",
+  [
+    {
+      "purpose": "SETUP",
       "tag" : "user should be able to log out",
       "skip": false,
-      "http_verb": "GET",
-      "payload": {},
+      "http_verb": "POST",
+      "payload": {
+        "username": "Grizzly",
+        "password": "adam$"
+      },
       "files": {},
-      "url": "https://localhost:3000/user/logout",
+      "url": "https://localhost:3000/user/login",
       "expected_response_status_code": 200,
       "expected_response_headers_content_type": "application/json; charset=utf-8",
       "expected_response_json": {
-        "status": "Logout successful!"
+        "user": 1,
+        "status": "Login successful!"
       },
       "expected_response_json_type_check": {},
       "retain_response_keys": [],
-      "subsequent_request": {}
-      }
-  }
+      "subsequent_request": {
+        "purpose": "TEST",
+        "tag" : "user should be able to log out",
+        "skip": false,
+        "http_verb": "GET",
+        "payload": {},
+        "files": {},
+        "url": "https://localhost:3000/user/logout",
+        "expected_response_status_code": 200,
+        "expected_response_headers_content_type": "application/json; charset=utf-8",
+        "expected_response_json": {
+          "status": "Logout successful!"
+        },
+        "expected_response_json_type_check": {},
+        "retain_response_keys": [],
+        "subsequent_request": {}
+        }
+    },
+    {...}
+  ]
   ```
 
 **EXPLANATION OF KEYS:**
