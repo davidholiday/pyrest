@@ -10,7 +10,7 @@ Create a virtual environment and use the requirements file in the project direct
 
 ## HOW TO RUN?
 In pycharm or the terminal you can run this like any other pytest. If running at the command line get into the root project directory and execute the following command:
- `pytest -s pyrest.py` (omit the `-s` flag if you don't want log data printed to the terminal). This will cause pyREST to collect everything in the `./test_parameter_files` directory and use those json files to send RESTful requests and check the responses against whatever the parameter file says should come back. 
+ `./pytest -s pyrest.py` (omit the `-s` flag if you don't want log data printed to the terminal). This will cause pyREST to collect everything in the `./test_parameter_files` directory and use those json files to send RESTful requests and check the responses against whatever the parameter file says should come back. 
 
 
 ## HOW TO MAKE THE SAMPLE TEST RUN? 
